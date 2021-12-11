@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Authentication\Domain\User"
+            table="user"
+            schema="auth_database">
+
+        <id name="id" type="user_id" column="id" length="36" />
+
+        <embedded name="name" class="Authentication\Domain\ValueObjects\UserName" use-column-prefix="false" />
+        <embedded name="password" class="Authentication\Domain\ValueObjects\UserPassword" use-column-prefix="false"/>
+    </entity>
+</doctrine-mapping>

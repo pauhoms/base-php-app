@@ -1,0 +1,29 @@
+name: CI
+
+on: push
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: 🐳 Run containers
+      run: |
+        make build
+        make run
+
+    - name: 📚 Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: 📖 Install dependencies
+      run: composer install
+    
+    - name: 📔 Linter
+      run: make lint
+
+    - name: 🧪 Test
+      run: |
+        make test

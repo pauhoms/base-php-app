@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  database:
+    build:
+      context: ./docker/database
+    container_name: auth-database
+    environment:
+      - MYSQL_DATABASE=auth_database
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=toor
+    ports:
+      - "3306:3306"
