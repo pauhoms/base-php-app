@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\Authentication\User\Unit\Infrastructure;
+namespace Tests\User\User\Unit\Infrastructure;
 
 
-use Authentication\Domain\User;
-use Authentication\Domain\ValueObjects\UserId;
-use Authentication\Domain\ValueObjects\UserName;
-use Authentication\Domain\ValueObjects\UserPassword;
-use Authentication\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
+use User\Domain\User;
+use User\Domain\ValueObjects\UserId;
+use User\Domain\ValueObjects\UserName;
+use User\Domain\ValueObjects\UserPassword;
+use User\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
 use Shared\Domain\Criteria\Criteria;
 use Shared\Domain\Criteria\Filter;
 use Shared\Domain\Criteria\FilterField;
@@ -20,7 +20,7 @@ use Shared\Domain\Criteria\OrderBy;
 use Shared\Domain\ValueObjects\Enum;
 use Shared\Domain\ValueObjects\StringValueObject;
 use Shared\Infrastructure\Persistance\Doctrine\DoctrineCriteriaConverter;
-use Tests\Authentication\Shared\DoctrineTestCase;
+use Tests\User\Shared\DoctrineTestCase;
 
 
 final class DoctrineUserRepositoryTest extends DoctrineTestCase

@@ -1,18 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Authentication\Infrastructure\Persistence\Doctrine;
+namespace User\Infrastructure\Persistence\Doctrine;
 
 
-use Authentication\Domain\User;
-use Authentication\Domain\ValueObjects\UserId;
-use Authentication\Domain\ValueObjects\UserName;
-use Authentication\Domain\ValueObjects\UserPassword;
-use Doctrine\Common\Collections\Criteria as DoctrineCriteria;
-use Doctrine\Common\Collections\Expr\Comparison;
-use Doctrine\DBAL\Schema\Comparator;
+use User\Domain\User;
+use User\Domain\ValueObjects\UserId;
 use Shared\Domain\Criteria\Criteria;
-use Shared\Infrastructure\Persistance\Doctrine\DoctrineCriteriaConverter;
 use Shared\Infrastructure\Persistance\Doctrine\DoctrineRepository;
 
 final class DoctrineUserRepository extends DoctrineRepository

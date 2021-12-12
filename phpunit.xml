@@ -6,7 +6,7 @@
 >
     <testsuites>
         <testsuite name="Authentication">
-            <directory suffix="Test.php">./tests/Authentication/</directory>
+            <directory suffix="Test.php">./tests/User/</directory>
         </testsuite>
         <testsuite name="Shared">
             <directory suffix="Test.php">./tests/Shared/</directory>

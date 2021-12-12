@@ -5,7 +5,7 @@ namespace Shared\Infrastructure\Persistance\Doctrine;
 
 
 
-use Authentication\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
+use User\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Authentication;
+namespace Tests\User;
 
 use Tests\Shared\FeatureTestCase;
 use Slim\App;

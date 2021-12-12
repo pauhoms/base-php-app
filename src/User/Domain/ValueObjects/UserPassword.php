@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Authentication\Domain\ValueObjects;
+namespace User\Domain\ValueObjects;
 
 
-use Authentication\Domain\Exceptions\InvalidPasswordEncryptation;
+use User\Domain\Exceptions\InvalidPasswordEncryptation;
 use Shared\Domain\ValueObjects\StringValueObject;
 
 final class UserPassword extends StringValueObject

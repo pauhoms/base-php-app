@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Authentication\Domain\Exceptions;
+namespace User\Domain\Exceptions;
 
 
 use RuntimeException;

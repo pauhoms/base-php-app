@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Authentication\Domain;
+namespace User\Domain;
 
 
-use Authentication\Domain\ValueObjects\UserId;
-use Authentication\Domain\ValueObjects\UserName;
-use Authentication\Domain\ValueObjects\UserPassword;
+use User\Domain\ValueObjects\UserId;
+use User\Domain\ValueObjects\UserName;
+use User\Domain\ValueObjects\UserPassword;
 
 final class User
 {

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Authentication\Domain\ValueObjects;
+namespace User\Domain\ValueObjects;
 
 
 use Shared\Domain\ValueObjects\StringValueObject;

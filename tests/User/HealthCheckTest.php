@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tests\Authentication;
+namespace Tests\User;
 
 
 class HealthCheckTest extends AuthenticationFeatureTestCase

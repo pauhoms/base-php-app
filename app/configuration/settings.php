@@ -4,10 +4,10 @@ return [
     'mysql' => [
         'cache_dir' => __DIR__ . '/../../var/doctrine',
         'metadata_dirs' => [
-            __DIR__ . '/../../src/Authentication/Infrastructure/Persistence/Doctrine/Entity/'
+            __DIR__ . '/../../src/User/Infrastructure/Persistence/Doctrine/Entity/'
         ],
         'custom-type' => [
-            ['user_id', 'Authentication\Infrastructure\Persistence\Doctrine\Entity\UserIdType']
+            ['user_id', 'User\Infrastructure\Persistence\Doctrine\Entity\UserIdType']
         ],
         'connection' => [
             'driver' => 'pdo_mysql',
