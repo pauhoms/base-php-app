@@ -30,3 +30,14 @@ services:
     restart: always
     volumes:
       - ../:/var/www/html
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: "swagger"
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./../documentation/:/documentation
+    environment:
+      SWAGGER_JSON: /documentation/api.yaml
+
