@@ -1,0 +1,29 @@
+post:
+  summary: User creator
+  tags:
+    - User
+  description: End point for create users.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: 
+          type: object
+          properties:
+            name:
+              type: string
+              example: "pau"
+            password:
+              type: string
+              example: "password"
+  responses:
+    '200':
+      description: The id of the user we have created
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              id:
+                type: string
+                example: "73a54b61-6ab1-4cf9-a71e-400a818848a8"
