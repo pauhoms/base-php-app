@@ -2,7 +2,7 @@
 namespace Tests\Unit\User\Application;
 
 use PHPUnit\Framework\TestCase;
-use User\Application\Bus\UserCreatorResponse;
+use User\Application\Bus\UserCreator\UserCreatorResponse;
 use User\Application\Service\Create\UserCreator;
 use User\Domain\Exceptions\UserDoesExist;
 use User\Domain\Repositories\UserRepository;

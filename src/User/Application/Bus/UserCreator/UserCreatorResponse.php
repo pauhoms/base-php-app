@@ -1,6 +1,6 @@
 <?php
 
-namespace User\Application\Bus;
+namespace User\Application\Bus\UserCreator;
 
 use Shared\Domain\Bus\Response;
 

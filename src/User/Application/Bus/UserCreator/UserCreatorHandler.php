@@ -1,6 +1,6 @@
 <?php
 
-namespace User\Application\Bus;
+namespace User\Application\Bus\UserCreator;
 
 use User\Application\Service\Create\UserCreator;
 use User\Domain\Repositories\UserRepository;
