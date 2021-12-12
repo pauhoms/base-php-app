@@ -32,9 +32,6 @@ final class UserCreatorController {
                 ])
             );
         }
-        
-
-        
 
         return $response;
     }

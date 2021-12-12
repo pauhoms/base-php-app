@@ -27,3 +27,24 @@ post:
               id:
                 type: string
                 example: "73a54b61-6ab1-4cf9-a71e-400a818848a8"
+    '415':
+      description: Invalid parameters
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "Invalid parameters"
+    '409':
+      description: The username already exists
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "The user test exist"
+
