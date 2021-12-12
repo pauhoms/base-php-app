@@ -2,14 +2,16 @@
 
 use DI\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
+use User\Domain\Repositories\UserRepository;
+use User\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
 
+
+$data = require __DIR__ . '/../configuration/database.php';
 
 $containerBuilder = new ContainerBuilder();
 $containerBuilder->addDefinitions([
-    EntityManager::class => function() {
-        $data = require __DIR__ . '/../configuration/database.php';
-        return $data();
-    }
+    EntityManager::class => $data(),
+    UserRepository::class => fn($x) => new DoctrineUserRepository($data())
 ]);
 
 return $containerBuilder;

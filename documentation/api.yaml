@@ -10,3 +10,5 @@ servers:
 paths:
   /api/health-check:
     $ref: "./health-check.yaml"
+  /api/user/create:
+    $ref: "./User/user-creator.yaml"

@@ -1,0 +1,50 @@
+post:
+  summary: User creator
+  tags:
+    - User
+  description: End point for create users.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema: 
+          type: object
+          properties:
+            name:
+              type: string
+              example: "pau"
+            password:
+              type: string
+              example: "password"
+  responses:
+    '200':
+      description: The id of the user we have created
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              id:
+                type: string
+                example: "73a54b61-6ab1-4cf9-a71e-400a818848a8"
+    '415':
+      description: Invalid parameters
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "Invalid parameters"
+    '409':
+      description: The username already exists
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "The user test exist"
+
