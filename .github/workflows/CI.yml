@@ -24,5 +24,8 @@ jobs:
     - name: 📔 Linter
       run: make lint
 
+    - name: 📂 Wait for database
+      run: sleep 30
+
     - name: 🧪 Test
       run: make test
