@@ -5,7 +5,7 @@
 
     <entity name="Authentication\Domain\User"
             table="user"
-            schema="auth_database">
+            schema="database">
 
         <id name="id" type="user_id" column="id" length="36" />
 

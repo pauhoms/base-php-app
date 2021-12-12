@@ -11,9 +11,9 @@ return [
         ],
         'connection' => [
             'driver' => 'pdo_mysql',
-            'host' => '127.0.0.1',
+            'host' => 'database',
             'port' => 3306,
-            'dbname' => 'auth_database',
+            'dbname' => 'database',
             'user' => 'root',
             'password' => 'toor'
         ]

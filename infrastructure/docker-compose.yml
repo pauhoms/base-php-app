@@ -4,11 +4,29 @@ services:
   database:
     build:
       context: ./docker/database
-    container_name: auth-database
+    container_name: database
     environment:
-      - MYSQL_DATABASE=auth_database
+      - MYSQL_DATABASE=database
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=toor
     ports:
       - "3306:3306"
+
+  nginx:
+    build:
+      context: ./../
+      dockerfile: ./infrastructure/docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./../
+      dockerfile: ./infrastructure/docker/php/Dockerfile
+    container_name: php
+    restart: always
+    volumes:
+      - ../:/var/www/html
