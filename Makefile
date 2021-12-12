@@ -38,6 +38,6 @@ composer-validate:
 	docker exec -i php sh -c 'composer validate --strict'
 
 migrations:
-	docker exec -i database sh -c 'exec mysql -uroot -p"toor"  --database="database"' --default-character-set=utf8mb4 < ./infrastructure/docker/database/auth-test-data.sql
+	docker exec -i database sh -c 'exec mysql -uuser -p"password"  --database="database"' --default-character-set=utf8mb4 < ./infrastructure/docker/database/auth-test-data.sql
 
 .PHONY: build
