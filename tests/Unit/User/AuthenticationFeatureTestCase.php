@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\User;
+namespace Tests\Unit\User;
 
-use Tests\Shared\FeatureTestCase;
+use Tests\Unit\Shared\FeatureTestCase;
 use Slim\App;
 
 abstract class AuthenticationFeatureTestCase extends FeatureTestCase

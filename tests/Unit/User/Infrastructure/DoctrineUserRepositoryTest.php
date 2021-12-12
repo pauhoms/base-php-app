@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\User\User\Unit\Infrastructure;
+namespace Tests\Unit\User\User\Unit\Infrastructure;
 
 
 use User\Domain\User;
@@ -20,7 +20,7 @@ use Shared\Domain\Criteria\OrderBy;
 use Shared\Domain\ValueObjects\Enum;
 use Shared\Domain\ValueObjects\StringValueObject;
 use Shared\Infrastructure\Persistance\Doctrine\DoctrineCriteriaConverter;
-use Tests\User\Shared\DoctrineTestCase;
+use Tests\Unit\User\Shared\DoctrineTestCase;
 
 
 final class DoctrineUserRepositoryTest extends DoctrineTestCase

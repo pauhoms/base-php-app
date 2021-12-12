@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\User\Shared;
+namespace Tests\Unit\User\Shared;
 
 
 use Doctrine\ORM\EntityManager;
@@ -11,7 +11,7 @@ abstract class DoctrineTestCase extends TestCase
 {
     protected function getEntityManager(): EntityManager
     {
-        $data = require __DIR__ . '/../../../app/configuration/database.php';
+        $data = require __DIR__ . '/../../../../app/configuration/database.php';
         $entityManager = $data();
         $entityManager->getConnection()->connect();
 
