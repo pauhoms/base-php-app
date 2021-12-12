@@ -9,6 +9,6 @@ return function (App $app) {
 
         $group->group('/user', function (RouteCollectorProxy $group) {
             $group->post('/create', 'App\Controllers\User\Create\UserCreatorController');
-        });
+        })->add('App\Middleware\ErrorHandler');
     });
 };
