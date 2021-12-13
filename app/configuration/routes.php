@@ -8,6 +8,7 @@ return function (App $app) {
         $group->get('/health-check', 'App\Controllers\HealthCheck');
 
         $group->group('/user', function (RouteCollectorProxy $group) {
+            $group->get('/authenticate', 'App\Controllers\User\Get\UserAuthenticatorController');
             $group->post('/create', 'App\Controllers\User\Create\UserCreatorController');
         })->add('App\Middleware\ErrorHandler');
     });

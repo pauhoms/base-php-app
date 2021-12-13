@@ -1,6 +1,6 @@
 <?php
 
-namespace User\Application\Bus\UserCreator;
+namespace User\Application\Bus;
 
 final class UserQuery {
     public function __construct(private ?string $id, private string $name, private string $password)

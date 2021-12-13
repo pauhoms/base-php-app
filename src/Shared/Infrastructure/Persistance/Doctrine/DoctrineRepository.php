@@ -56,7 +56,7 @@ abstract class DoctrineRepository
             ->createQueryBuilder('u')
             ->addCriteria($doctrineCriteria)
             ->getQuery()
-            ->getArrayResult();
+            ->getResult();
     }
 
     protected abstract function getClass(): string;

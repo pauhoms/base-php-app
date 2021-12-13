@@ -4,7 +4,7 @@ info:
   description: Api to learn about hexagonal and ddd architecture
   version: 0.0.1
 servers:
-  - url: http://localhost/api/
+  - url: http://localhost/
     description: Local server
 
 paths:
@@ -12,3 +12,6 @@ paths:
     $ref: "./health-check.yaml"
   /api/user/create:
     $ref: "./User/user-creator.yaml"
+  /api/user/authenticate:
+    $ref: "./User/user-authenticator.yaml"
+

@@ -5,7 +5,7 @@ namespace App\Controllers\User\Create;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use User\Application\Bus\UserCreator\UserCreatorHandler;
-use User\Application\Bus\UserCreator\UserQuery;
+use User\Application\Bus\UserQuery;
 use User\Domain\Exceptions\UserDoesExist;
 use User\Domain\Repositories\UserRepository;
 
