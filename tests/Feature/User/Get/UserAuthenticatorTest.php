@@ -32,6 +32,18 @@ final class UserAuthenticatorTest extends FeatureTestCase
         $this->assertEquals(401, $result->getStatusCode());
     }
 
+    /** @test */
+    public function userDoesNotExist(): void
+    {
+        $payload = [
+            "user-name" => "name22341",
+            "password" => "test2"
+        ];
+
+        $result = $this->createRequest("GET", "/api/user/authenticate", null, $payload);
+
+        $this->assertEquals(404, $result->getStatusCode());
+    }
 
     /** @test */
     public function payloadShouldBeInvalid(): void
