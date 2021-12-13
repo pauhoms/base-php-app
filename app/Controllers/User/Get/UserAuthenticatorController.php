@@ -3,12 +3,12 @@
 namespace App\Controllers\User\Get;
 
 use User\Application\Bus\UserQuery;
-use User\Domain\Exceptions\UserDoesExist;
 use User\Domain\Repositories\UserRepository;
 use User\Domain\Exceptions\PasswordDoesNotMatch;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use User\Application\Bus\UserAuthenticator\UserAuthenticatiorHandler;
+use User\Domain\Exceptions\UserDoesNotExist;
 
 final class UserAuthenticatorController
 {
@@ -18,7 +18,6 @@ final class UserAuthenticatorController
 
     public function __invoke(Request $request, Response $response): Response
     {
-       // var_dump($request->getQueryParams());
         $handler = new UserAuthenticatiorHandler($this->userRepository);
         try {
             $token = $handler->ask($this->bindParameters($request->getQueryParams()));
@@ -27,8 +26,8 @@ final class UserAuthenticatorController
                     "token" => $token->token()
                 ])
             );
-        } catch (UserDoesExist $e) {
-            $response = $response->withStatus(409);
+        } catch (UserDoesNotExist $e) {
+            $response = $response->withStatus(404);
             $response->getBody()->write(
                 json_encode([
                     "error-message" => $e->getMessage()
