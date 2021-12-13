@@ -32,6 +32,9 @@ final class FakeUserRepository extends BaseFakeRepository implements UserReposit
 
     public function search(Criteria $criteria): array
     {
-        return $this->get();
+        if ($criteria->filters()->filters()[0]->value()->value() === "test")
+            return $this->get();
+
+        return [];
     }
 }
