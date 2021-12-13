@@ -1,0 +1,61 @@
+get:
+  summary: User Authentificator
+  tags:
+    - User
+  description: End point for authentificate users.
+  parameters:
+    - name: user-name
+      in: query
+      required: true
+      description: Name from user
+      schema:
+        type : string
+    - name: password
+      in: query
+      required: true
+      description: The password from user
+      schema:
+        type : string
+
+  responses:
+    '200':
+      description: The id of the user we have created
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              token:
+                type: string
+                example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    '415':
+      description: Invalid parameters
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "Invalid parameters"
+    '404':
+      description: The username doesn't exist
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "The user test2 doesn't exist"
+    '401':
+      description: The password doesn't match
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "The password of user test doesn't match that of the persistence"
+

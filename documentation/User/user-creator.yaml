@@ -10,7 +10,7 @@ post:
         schema: 
           type: object
           properties:
-            name:
+            user-name:
               type: string
               example: "pau"
             password:
