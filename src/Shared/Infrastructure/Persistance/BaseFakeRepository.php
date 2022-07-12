@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shared\Infrastructure\Persistance;
 
 abstract class BaseFakeRepository
@@ -13,7 +15,7 @@ abstract class BaseFakeRepository
 
     protected function add(object $obj): void
     {
-        array_push($this->value, $obj);
+        $this->value[] = $obj;
     }
 
     protected function get(): array

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Application\Service\Create;
 
 use User\Application\Service\Get\FindUserByName;
@@ -11,7 +13,7 @@ use User\Domain\ValueObjects\UserName;
 use User\Domain\ValueObjects\UserPassword;
 
 final class UserCreator {
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private readonly UserRepository $userRepository)
     {
     }
 

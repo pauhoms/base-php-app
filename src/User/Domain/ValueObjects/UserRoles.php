@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace User\Domain\ValueObjects;
 
-
 use Shared\Domain\ValueObjects\Collection;
 use Shared\Domain\ValueObjects\StringValueObject;
 

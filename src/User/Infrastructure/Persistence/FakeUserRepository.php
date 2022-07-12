@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Infrastructure\Persistence;
 
 use Shared\Domain\Criteria\Criteria;
@@ -27,7 +29,7 @@ final class FakeUserRepository extends BaseFakeRepository implements UserReposit
 
     public function findById(UserId $userId): ?User
     {
-        return isset($this->get()[0]) ? $this->get()[0] : null;
+        return $this->get()[0] ?? null;
     }
 
     public function search(Criteria $criteria): array

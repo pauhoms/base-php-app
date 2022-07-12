@@ -6,28 +6,23 @@ namespace Shared\Domain\Criteria;
 
 final class Order
 {
-    public function __construct(private OrderBy $orderBy, private OrderType $orderType)
+    public function __construct(private readonly OrderBy $orderBy, private readonly OrderType $orderType)
     {
     }
 
     public static function createDesc(OrderBy $orderBy): Order
     {
-        return new self($orderBy, OrderType::desc());
+        return new self($orderBy, OrderType::DESC);
     }
 
     public static function createAsc(OrderBy $orderBy): Order
     {
-        return new self($orderBy, OrderType::asc());
-    }
-
-    public static function fromValues(?string $orderBy, ?string $order): Order
-    {
-        return null === $orderBy ? self::none() : new Order(new OrderBy($orderBy), new OrderType($order));
+        return new self($orderBy, OrderType::ASC);
     }
 
     public static function none(): Order
     {
-        return new Order(new OrderBy(''), OrderType::none());
+        return new Order(new OrderBy(''), OrderType::NONE);
     }
 
     public function orderBy(): OrderBy
@@ -42,11 +37,11 @@ final class Order
 
     public function isNone(): bool
     {
-        return $this->orderType()->isNone();
+        return $this->orderType() === OrderType::NONE;
     }
 
     public function serialize(): string
     {
-        return sprintf('%s.%s', $this->orderBy->value(), $this->orderType->value());
+        return sprintf('%s.%s', $this->orderBy->value(), $this->orderType->value);
     }
 }

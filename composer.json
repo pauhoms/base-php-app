@@ -25,7 +25,9 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "overtrue/phplint": "^2.3"
+        "overtrue/phplint": "^2.3",
+        "phpstan/phpstan": "^1.8",
+        "vimeo/psalm": "^4"
     },
     "autoload": {
         "psr-4": {

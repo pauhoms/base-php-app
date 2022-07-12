@@ -6,7 +6,7 @@ namespace User\Domain\Exceptions;
 
 use RuntimeException;
 
-final class InvalidPasswordEncryptation extends RuntimeException
+final class InvalidPasswordEncryption extends RuntimeException
 {
     public function __construct()
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Application\Bus\UserAuthenticator;
 
 use User\Application\Bus\UserAuthenticator\UserAuthenticatorResponse;
@@ -9,9 +11,9 @@ use User\Domain\Repositories\UserRepository;
 use User\Domain\ValueObjects\UserName;
 use User\Domain\ValueObjects\UserPassword;
 
-final class UserAuthenticatiorHandler
+final class UserAuthenticationHandler
 {
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private readonly UserRepository $userRepository)
     {
     }
 

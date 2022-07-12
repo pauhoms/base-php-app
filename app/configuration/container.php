@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use DI\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
 use User\Domain\Repositories\UserRepository;

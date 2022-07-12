@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Application\Service\Get;
 
 use User\Domain\User;
@@ -15,7 +17,7 @@ use Shared\Domain\Criteria\FilterOperator;
 use User\Domain\Repositories\UserRepository;
 
 final class FindUserByName {
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private readonly UserRepository $userRepository)
     {
     }
 

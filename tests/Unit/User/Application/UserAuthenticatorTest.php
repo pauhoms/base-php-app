@@ -4,9 +4,7 @@ namespace Tests\Unit\User\Application;
 
 use PHPUnit\Framework\TestCase;
 use User\Application\Service\Get\UserAuthenticator;
-use User\Domain\Exceptions\UserDoesExist;
 use User\Domain\Exceptions\UserDoesNotExist;
-use User\Domain\Repositories\UserRepository;
 use User\Domain\User;
 use User\Domain\ValueObjects\UserId;
 use User\Domain\ValueObjects\UserName;
@@ -30,7 +28,7 @@ final class UserAuthenticatorTest extends TestCase
     }
 
     /** @test */
-    public function userShoudBeAuthenticated(): void
+    public function userShouldBeAuthenticated(): void
     {
         $this->assertNotNull(
             $this->userAuthenticator->__invoke(new UserName("test"), new UserPassword("test"))

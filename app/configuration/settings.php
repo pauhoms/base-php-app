@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'mysql' => [
         'cache_dir' => __DIR__ . '/../../var/doctrine',

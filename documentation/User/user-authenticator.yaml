@@ -1,8 +1,8 @@
 get:
-  summary: User Authentificator
+  summary: User Authenticator
   tags:
     - User
-  description: End point for authentificate users.
+  description: End point for authenticate users.
   parameters:
     - name: user-name
       in: query

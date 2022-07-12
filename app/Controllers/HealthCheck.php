@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -18,8 +19,6 @@ class HealthCheck
 
     public function __invoke(Request $request, Response $response): Response
     {
-        $this->entityManager->getConnection()->connect();
-
         $json = [
             "mariadb" => $this->entityManager->getConnection()->isConnected()
         ];

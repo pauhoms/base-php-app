@@ -12,7 +12,7 @@ $app = AppFactory::create();
 $app->addRoutingMiddleware();
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
-$routes = require __DIR__ . '/configuration/routes.php';
+$routes = require __DIR__ . '/configuration/routes/routes.php';
 $routes($app);
 
 return $app;

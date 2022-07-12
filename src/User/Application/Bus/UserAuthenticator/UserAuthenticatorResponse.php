@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Application\Bus\UserAuthenticator;
 
 final class UserAuthenticatorResponse
 {
-    public function __construct(private string $token)
+    public function __construct(private readonly string $token)
     {
     }
 

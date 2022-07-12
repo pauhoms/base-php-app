@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace User\Domain;
-
 
 use User\Domain\ValueObjects\UserId;
 use User\Domain\ValueObjects\UserName;
@@ -11,9 +11,9 @@ use User\Domain\ValueObjects\UserPassword;
 final class User
 {
     public function __construct(
-        private UserId $id,
-        private UserName $name,
-        private UserPassword $password
+        private readonly UserId $id,
+        private UserName        $name,
+        private UserPassword    $password
     ) {
     }
 

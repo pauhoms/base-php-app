@@ -1,10 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Application\Bus;
 
 final class UserQuery {
-    public function __construct(private ?string $id, private string $name, private string $password)
-    {
+    public function __construct(
+        private readonly ?string $id,
+        private readonly string $name,
+        private readonly string $password
+    ) {
     }
 
     public function id(): ?string

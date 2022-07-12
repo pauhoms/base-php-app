@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Shared\Infrastructure\Persistance\Doctrine;
 
-
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 use Shared\Domain\Utils;

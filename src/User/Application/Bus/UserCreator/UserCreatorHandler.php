@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Application\Bus\UserCreator;
 
 use User\Application\Bus\UserQuery;
@@ -9,7 +11,7 @@ use User\Domain\Repositories\UserRepository;
 use User\Application\Service\Create\UserCreator;
 
 final class UserCreatorHandler {
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private readonly UserRepository $userRepository)
     {
     }
 

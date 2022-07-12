@@ -13,7 +13,7 @@ use User\Domain\Repositories\UserRepository;
 
 final class UserAuthenticator
 {
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private readonly UserRepository $userRepository)
     {
     }
 
@@ -23,7 +23,7 @@ final class UserAuthenticator
 
         $this->authenticate($user, $userPassword);
 
-        return (JwtToken::create(["username" => $username->value()]))->value();
+        return (JwtToken::create(["username" => $username->value()]))->__toString();
     }
 
     private function authenticate(User $user, UserPassword $userPassword): void

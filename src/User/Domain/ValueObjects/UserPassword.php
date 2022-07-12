@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace User\Domain\ValueObjects;
 
-
-use User\Domain\Exceptions\InvalidPasswordEncryptation;
+use User\Domain\Exceptions\InvalidPasswordEncryption;
 use Shared\Domain\ValueObjects\StringValueObject;
 
 final class UserPassword extends StringValueObject
@@ -16,7 +15,7 @@ final class UserPassword extends StringValueObject
     public function encryptPassword(): void
     {
         if ($this->isEmpty())
-            throw new InvalidPasswordEncryptation();
+            throw new InvalidPasswordEncryption();
 
         $this->value = password_hash($this->value(), PASSWORD_BCRYPT, $this->encryptOptions);
     }

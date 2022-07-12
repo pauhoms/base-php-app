@@ -26,7 +26,9 @@ stop: ## Stop the containers
 	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml down -v
 
 lint:
-		docker exec -i php sh -c './vendor/bin/phplint ./'
+	docker exec -i php sh -c './vendor/bin/phplint ./'
+	docker exec -i php sh -c './vendor/bin/phpstan analyse src tests -c phpstant.neon'
+	docker exec -i php sh -c './vendor/bin/psalm'
 
 test: migrations
 	docker exec -i php sh -c './vendor/phpunit/phpunit/phpunit'

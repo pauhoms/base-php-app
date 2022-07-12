@@ -60,7 +60,6 @@ final class DoctrineUserRepositoryTest extends DoctrineTestCase
         $criteria = new Criteria($filters, $order, 3, 2);
         $result = $this->userRepository->search($criteria);
 
-        $this->assertNotNull($result);
-        $this->assertFalse(array_key_exists(2, $result));
+        $this->assertArrayNotHasKey(2, $result);
     }
 }

@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace User\Application\Bus\UserCreator;
 
 final class UserCreatorResponse {
-    public function __construct(private string $id)
+    public function __construct(private readonly string $id)
     {
     }
 

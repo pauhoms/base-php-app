@@ -12,11 +12,11 @@ use Firebase\JWT\SignatureInvalidException;
 
 final class JwtToken extends StringValueObject
 {
-    private static $secret_key = '67Zin<LVL2_fZft43OAcB}h-`DSwMWroHFSJj{HhCxWF<X]Qk4/Nrgz}EYURyEy';
+    private static string $secret_key = '67Zin<LVL2_fZft43OAcB}h-`DSwMWroHFSJj{HhCxWF<X]Qk4/Nrgz}EYURyEy';
 
     public function __construct(?string $value)
     {
-        $this->value = $value;
+        parent::__construct($value);
     }
 
     public static function create(array $data): self
