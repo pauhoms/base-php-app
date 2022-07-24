@@ -15,4 +15,11 @@
             <file name="app/bootstrap.php"/>
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <RedundantCondition>
+            <errorLevel type="suppress">
+                <directory name="src/"/>
+            </errorLevel>
+        </RedundantCondition>
+    </issueHandlers>
 </psalm>

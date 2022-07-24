@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace User\Application\Bus;
 
-final class UserQuery {
+use Shared\Domain\Bus\Query;
+
+final class UserQuery implements Query {
     public function __construct(
         private readonly ?string $id,
-        private readonly string $name,
-        private readonly string $password
+        private readonly ?string $name,
+        private readonly ?string $password
     ) {
     }
 
@@ -17,12 +19,12 @@ final class UserQuery {
         return $this->id;
     }
 
-    public function name(): string
+    public function name(): ?string
     {
         return $this->name;
     }
 
-    public function password(): string
+    public function password(): ?string
     {
         return $this->password;
     }

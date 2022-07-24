@@ -45,7 +45,7 @@ final class DoctrineUserRepositoryTest extends DoctrineTestCase
     /** @test */
     public function userShouldBeFound(): void
     {
-        $this->assertNotNull($this->userRepository->findById(new UserId('id')));
+        $this->assertNotNull($this->userRepository->findById(new UserId('9ae78eef-5842-4f54-814d-be0105d0f6bf')));
     }
 
     /** @test */

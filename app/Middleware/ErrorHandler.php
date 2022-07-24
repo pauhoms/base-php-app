@@ -7,6 +7,7 @@ namespace App\Middleware;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+use Shared\Infrastructure\Http\Exceptions\HttpException;
 use TypeError;
 
 final class ErrorHandler {
@@ -14,11 +15,11 @@ final class ErrorHandler {
     {
         try {
             return $handler->handle($request);
-        } catch (TypeError $e) {
-            $response = new \Slim\Psr7\Response(415);
+        } catch (HttpException $e) {
+            $response = new \Slim\Psr7\Response($e->httpCode);
             $response->getBody()->write(json_encode(
                 [
-                    'error_message' => 'Invalid parameters'
+                    'message' => $e->getMessage(),
                 ]
             ));
 

@@ -35,6 +35,9 @@ final class User
     public static function create(UserName $name, UserPassword $password): self
     {
         $password->encryptPassword();
-        return new User(UserId::random(), $name, $password);
+        /** @var UserId $id  */
+        $id = UserId::random();
+
+        return new User($id, $name, $password);
     }
 }

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace User\Application\Bus\UserAuthenticator;
 
-final class UserAuthenticatorResponse
+use Shared\Domain\Bus\QueryResponse;
+
+final class UserAuthenticatorResponse implements QueryResponse
 {
     public function __construct(private readonly string $token)
     {

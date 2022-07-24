@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace User\Application\Bus\UserCreator;
 
-final class UserCreatorResponse {
+use Shared\Domain\Bus\QueryResponse;
+
+final class UserCreatorQueryResponse implements QueryResponse {
     public function __construct(private readonly string $id)
     {
     }

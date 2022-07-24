@@ -13,6 +13,7 @@ abstract class Uuid implements Stringable
 
     public function __construct(string $value)
     {
+        $this->ensureIsValidUuid($value);
         $this->value = $value;
     }
 

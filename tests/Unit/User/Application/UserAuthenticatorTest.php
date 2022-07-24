@@ -22,7 +22,10 @@ final class UserAuthenticatorTest extends TestCase
         $password = new UserPassword("test");
         $password->encryptPassword();
 
-        $repository->save(new User(UserId::random(), new UserName("test"), $password));
+        /** @var UserId $id  */
+        $id = UserId::random();
+
+        $repository->save(new User($id, new UserName("test"), $password));
 
         $this->userAuthenticator = new UserAuthenticator($repository);
     }

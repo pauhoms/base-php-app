@@ -19,10 +19,7 @@ final class UserCreator {
 
     public function __invoke(UserName $name, UserPassword $password): string
     {
-        $this->userExist($name);
-
-        $password->encryptPassword();
-        $user = new User(UserId::random(), $name, $password);
+        $user = $this->createUser($name, $password);
 
         $this->userRepository->save($user);
 
@@ -35,5 +32,16 @@ final class UserCreator {
 
         if (sizeof($userFinder->__invoke($userName)) !== 0)
             throw new UserDoesExist($userName);
+    }
+
+    private function createUser(UserName $name, UserPassword $password): User
+    {
+        $this->userExist($name);
+        $password->encryptPassword();
+
+        /** @var UserId $id */
+        $id = UserId::random();
+
+        return new User($id, $name, $password);
     }
 }

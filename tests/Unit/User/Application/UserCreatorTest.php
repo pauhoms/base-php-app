@@ -10,7 +10,7 @@ use User\Domain\ValueObjects\UserPassword;
 use User\Domain\Repositories\UserRepository;
 use User\Application\Service\Create\UserCreator;
 use User\Infrastructure\Persistence\FakeUserRepository;
-use User\Application\Bus\UserCreator\UserCreatorResponse;
+use User\Application\Bus\UserCreator\UserCreatorQueryResponse;
 
 final class UserCreatorTest extends TestCase
 {
@@ -23,7 +23,10 @@ final class UserCreatorTest extends TestCase
         $password = new UserPassword("test");
         $password->encryptPassword();
 
-        $repository->save(new User(UserId::random(), new UserName("test"), $password));
+        /** @var UserId $id  */
+        $id = UserId::random();
+
+        $repository->save(new User($id, new UserName("test"), $password));
         
         $this->userCreator = new UserCreator($repository);
     }
