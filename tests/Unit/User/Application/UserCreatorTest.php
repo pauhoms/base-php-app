@@ -15,34 +15,36 @@ use User\Application\Bus\UserCreator\UserCreatorQueryResponse;
 final class UserCreatorTest extends TestCase
 {
     private UserCreator $userCreator;
+    private FakeUserRepository $fakeUserRepository;
 
     /** @before */
     public function before(): void
     {
-        $repository = new FakeUserRepository();
+        $this->fakeUserRepository = new FakeUserRepository();
         $password = new UserPassword("test");
         $password->encryptPassword();
 
         /** @var UserId $id  */
         $id = UserId::random();
 
-        $repository->save(new User($id, new UserName("test"), $password));
+        $this->fakeUserRepository->save(new User($id, new UserName("test"), $password));
         
-        $this->userCreator = new UserCreator($repository);
+        $this->userCreator = new UserCreator($this->fakeUserRepository);
     }
 
     /** @test */
-    public function userShouldBeCreated(): void
+    public function user_should_be_created(): void
     {
-        $this->assertNotNull(
-            $this->userCreator->__invoke(new UserName("test2"), new UserPassword("test"))
-        );
+        $userId = UserId::random();
+        $this->userCreator->__invoke($userId, new UserName("test2"), new UserPassword("test"));
+
+        self::assertNotNull($this->fakeUserRepository->findById($userId));
     }
 
     /** @test */
-    public function userShouldBeExist(): void
+    public function user_should_not_be_created(): void
     {
         $this->expectException(UserDoesExist::class);
-        $this->userCreator->__invoke(new UserName("test"), new UserPassword("test"));
+        $this->userCreator->__invoke(UserId::random(), new UserName("test"), new UserPassword("test"));
     }
 }

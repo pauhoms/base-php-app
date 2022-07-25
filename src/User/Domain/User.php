@@ -32,11 +32,9 @@ final class User
         return $this->password;
     }
 
-    public static function create(UserName $name, UserPassword $password): self
+    public static function create(UserId $id, UserName $name, UserPassword $password): self
     {
         $password->encryptPassword();
-        /** @var UserId $id  */
-        $id = UserId::random();
 
         return new User($id, $name, $password);
     }

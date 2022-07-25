@@ -5,17 +5,16 @@ namespace User\Application\Service\Get;
 
 use Shared\Domain\ValueObjects\JwtToken;
 use User\Domain\Exceptions\PasswordDoesNotMatch;
+use User\Domain\Exceptions\UserDoesNotExist;
+use User\Domain\Repositories\UserRepository;
+use User\Domain\Services\FindUserByName;
 use User\Domain\User;
 use User\Domain\ValueObjects\UserName;
 use User\Domain\ValueObjects\UserPassword;
-use User\Domain\Exceptions\UserDoesNotExist;
-use User\Domain\Repositories\UserRepository;
 
 final class UserAuthenticator
 {
-    public function __construct(private readonly UserRepository $userRepository)
-    {
-    }
+    public function __construct(private readonly UserRepository $userRepository) {}
 
     public function __invoke(UserName $username, UserPassword $userPassword): string
     {
@@ -34,10 +33,10 @@ final class UserAuthenticator
 
     private function findUser(UserName $username): User
     {
-        $users = (new FindUserByName($this->userRepository))->__invoke($username);
+        $user = (new FindUserByName($this->userRepository))($username);
 
-        if (sizeof($users) === 0) throw new UserDoesNotExist($username);
+        if ($user === null) throw new UserDoesNotExist($username);
 
-        return $users[0];
+        return $user;
     }
 }

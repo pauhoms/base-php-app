@@ -32,11 +32,11 @@ final class FakeUserRepository extends BaseFakeRepository implements UserReposit
         return $this->get()[0] ?? null;
     }
 
-    public function search(Criteria $criteria): array
+    public function searchOne(Criteria $criteria): ?User
     {
         if ($criteria->filters()->filters()[0]->value()->value() === "test")
-            return $this->get();
+            return $this->get()[0];
 
-        return [];
+        return null;
     }
 }

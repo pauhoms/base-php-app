@@ -27,6 +27,12 @@ final class DoctrineUserRepository extends DoctrineRepository implements UserRep
         return $this->repository()->find($userId);
     }
 
+    public function searchOne(Criteria $criteria): ?User
+    {
+        return $this->searchOneByCriteria($criteria);
+    }
+
+    /** @return User[] */
     public function search(Criteria $criteria): array
     {
         return $this->searchByCriteria($criteria);

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Shared\Infrastructure\Persistance\Doctrine;
 
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\Query\QueryException;
 use User\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
@@ -55,6 +57,21 @@ abstract class DoctrineRepository
             ->addCriteria($doctrineCriteria)
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * @throws QueryException
+     * @throws NonUniqueResultException
+     */
+    protected function searchOneByCriteria(Criteria $criteria)
+    {
+        $doctrineCriteria = DoctrineCriteriaConverter::convert($criteria);
+
+        return $this->repository()
+            ->createQueryBuilder('u')
+            ->addCriteria($doctrineCriteria)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     protected abstract function getClass(): string;

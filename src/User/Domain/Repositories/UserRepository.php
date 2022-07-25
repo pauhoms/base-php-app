@@ -11,5 +11,5 @@ interface UserRepository {
     public function save(User $user): void;
     public function all(): array;
     public function findById(UserId $userId): ?User;
-    public function search(Criteria $criteria): array;
+    public function searchOne(Criteria $criteria): ?User;
 }

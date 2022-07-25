@@ -20,16 +20,9 @@ final class UserCreatorController extends ApiController {
     {
         $handler = new UserCreatorHandler($this->userRepository);
 
-        /** @var UserCreatorQueryResponse $userResponse */
-        $userResponse = $this->ask($handler, $this->bindParameters($request->getParsedBody()));
+        $this->dispatch($handler, $this->bindParameters($request->getParsedBody()));
 
-        $response->getBody()->write(
-            json_encode([
-                "id" => $userResponse->id()
-            ])
-        );
-
-        return $response;
+        return $response->withStatus(201);
     }
 
     protected function exceptionMapping(): array
@@ -42,7 +35,7 @@ final class UserCreatorController extends ApiController {
     private function bindParameters(?array $payload): UserQuery
     {
         return new UserQuery(
-            null,
+            (string) self::assertParameter($payload, "user-id", false),
             (string) self::assertParameter($payload, "user-name", false),
             (string) self::assertParameter($payload, "password", false),
         );

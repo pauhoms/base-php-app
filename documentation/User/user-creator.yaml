@@ -10,6 +10,9 @@ post:
         schema: 
           type: object
           properties:
+            user-id:
+              type: string
+              example: "73a54b61-6ab1-4cf9-a71e-400a818848a8"
             user-name:
               type: string
               example: "pau"
@@ -17,16 +20,8 @@ post:
               type: string
               example: "password"
   responses:
-    '200':
+    '201':
       description: The id of the user we have created
-      content:
-        application/json:
-          schema: 
-            type: object
-            properties:
-              id:
-                type: string
-                example: "73a54b61-6ab1-4cf9-a71e-400a818848a8"
     '415':
       description: Invalid parameters
       content:
@@ -47,4 +42,3 @@ post:
               error-message:
                 type: string
                 example: "The user test exist"
-

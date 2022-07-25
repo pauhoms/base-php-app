@@ -2,7 +2,10 @@
 
 namespace Tests\Feature\User\Create;
 
+use Shared\Domain\ValueObjects\Uuid;
 use Tests\Feature\FeatureTestCase;
+use User\Domain\User;
+use User\Domain\ValueObjects\UserId;
 
 final class UserCreateTest extends FeatureTestCase
 {
@@ -10,19 +13,21 @@ final class UserCreateTest extends FeatureTestCase
     public function userShouldBeCreated(): void
     {
         $payload = [
+            "user-id" => UserId::random()->value(),
             "user-name" => "test",
             "password" => "test"
         ];
 
         $result = $this->createRequest("POST", "/api/user/create", $payload);
 
-        $this->assertEquals(200, $result->getStatusCode());
+        $this->assertEquals(201, $result->getStatusCode());
     }
 
     /** @test */
     public function userShouldBeExist(): void
     {
         $payload = [
+            "user-id" => UserId::random()->value(),
             "user-name" => "name",
             "password" => "test"
         ];

@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace User\Application\Bus;
 
+use Shared\Domain\Bus\Command;
 use Shared\Domain\Bus\Query;
 
-final class UserQuery implements Query {
+final class UserQuery implements Query, Command {
     public function __construct(
         private readonly ?string $id,
         private readonly ?string $name,

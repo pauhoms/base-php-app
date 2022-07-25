@@ -4,6 +4,8 @@ namespace Shared\Infrastructure\Http;
 
 use Error;
 use Exception;
+use Shared\Domain\Bus\Command;
+use Shared\Domain\Bus\CommandHandler;
 use Shared\Domain\Bus\Query;
 use Shared\Domain\Bus\QueryHandler;
 use Shared\Domain\Bus\QueryResponse;
@@ -48,6 +50,23 @@ abstract class ApiController
     {
         try {
             return $handler->ask($query);
+        } catch (Exception|Error $e) {
+            $exceptions = array_merge($this->exceptionMapping(), self::SHARED_EXCEPTIONS_MAPPING);
+
+            array_map(
+                fn (string $exception, int $statusCode) => $this->throwHttpException($e, $exception, $statusCode),
+                array_keys($exceptions),
+                $exceptions
+            );
+
+            throw new HttpException($e->getMessage(), 500);
+        }
+    }
+
+    protected function dispatch(CommandHandler $handler, Command $query): void
+    {
+        try {
+            $handler->dispatch($query);
         } catch (Exception|Error $e) {
             $exceptions = array_merge($this->exceptionMapping(), self::SHARED_EXCEPTIONS_MAPPING);
 
