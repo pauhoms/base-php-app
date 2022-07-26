@@ -19,5 +19,12 @@ return [
             'user' => 'root',
             'password' => 'toor'
         ]
+    ],
+    'rabbit-mq' => [
+        "host" => "rabbitmq",
+        "port" => 5672,
+        "user" => "user",
+        "pass" => "pass",
+        "exchangeName" => "core"
     ]
 ];

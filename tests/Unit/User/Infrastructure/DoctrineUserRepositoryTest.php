@@ -12,7 +12,9 @@ use Shared\Domain\Criteria\Filters;
 use Shared\Domain\Criteria\FilterValue;
 use Shared\Domain\Criteria\Order;
 use Shared\Domain\Criteria\OrderBy;
-use Tests\Unit\Shared\Infrastructure\DoctrineTestCase;
+use Shared\Domain\ValueObjects\Uuid;
+use Tests\Unit\Shared\Infrastructure\IntegrationTestCase;
+use User\Domain\Repositories\UserRepository;
 use User\Domain\User;
 use User\Domain\ValueObjects\UserId;
 use User\Domain\ValueObjects\UserName;
@@ -20,20 +22,20 @@ use User\Domain\ValueObjects\UserPassword;
 use User\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
 
 
-final class DoctrineUserRepositoryTest extends DoctrineTestCase
+final class DoctrineUserRepositoryTest extends IntegrationTestCase
 {
     private DoctrineUserRepository $userRepository;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->userRepository = new DoctrineUserRepository($this->getEntityManager());
+        $this->userRepository = $this->getContainer()->get(UserRepository::class);
     }
 
     /** @test */
     public function userShouldBeSaved(): void
     {
-        $user = User::create(UserId::random(), new UserName("pau"), new UserPassword("root"));
+        $user = User::create(new UserId(Uuid::random()->value()), new UserName("pau"), new UserPassword("root"));
         $this->userRepository->save($user);
 
         $this->assertNotNull($this->userRepository->findById($user->id()));
