@@ -13,7 +13,6 @@ class StringUtilsTest extends TestCase
         $size = 10;
         $string = StringUtils::random($size);
 
-        self::assertNotNull($string);
         self::assertEquals($size, strlen($string));
     }
 }

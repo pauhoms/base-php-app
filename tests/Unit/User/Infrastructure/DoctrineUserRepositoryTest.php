@@ -35,7 +35,10 @@ final class DoctrineUserRepositoryTest extends IntegrationTestCase
     /** @test */
     public function userShouldBeSaved(): void
     {
-        $user = User::create(new UserId(Uuid::random()->value()), new UserName("pau"), new UserPassword("root"));
+        /** @var UserId $id */
+        $id = UserId::random();
+
+        $user = User::create($id, new UserName("pau"), new UserPassword("root"));
         $this->userRepository->save($user);
 
         $this->assertNotNull($this->userRepository->findById($user->id()));
@@ -50,14 +53,13 @@ final class DoctrineUserRepositoryTest extends IntegrationTestCase
     /** @test */
     public function userShouldBeFoundByCriteria(): void
     {
-        $filterByName = new Filter(new FilterField('name.value'), new FilterOperator('='), new FilterValue('pau'));
-        $filterByPassword = new Filter(new FilterField('password.value'), new FilterOperator('='), new FilterValue('password'));
+        $filterByName = new Filter(new FilterField('name.value'), new FilterOperator('='), new FilterValue('name'));
 
-        $filters = new Filters([$filterByName, $filterByPassword]);
+        $filters = new Filters([$filterByName]);
         $order = Order::createDesc(new OrderBy('password.value'));
 
-        $criteria = new Criteria($filters, $order, 3, 2);
-        $result = $this->userRepository->search($criteria);
+        $criteria = new Criteria($filters, $order, null, null);
+        $result = $this->userRepository->searchOne($criteria);
 
         $this->assertNotNull($result);
     }

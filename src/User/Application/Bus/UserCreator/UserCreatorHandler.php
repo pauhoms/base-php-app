@@ -19,15 +19,15 @@ final class UserCreatorHandler implements CommandHandler {
     }
 
     /**
-     * @param UserQuery $query
-     * @return UserCreatorQueryResponse|null
+     * @param UserQuery $command
+     * @return void
      */
-    public function dispatch($query): void
+    public function dispatch($command): void
     {
         $handler = new UserCreator($this->userRepository);
-        $id = new UserId($query->id());
-        $name = new UserName($query->name());
-        $password = new UserPassword($query->password());
+        $id = new UserId($command->id());
+        $name = new UserName($command->name());
+        $password = new UserPassword($command->password());
 
         $handler->__invoke($id, $name, $password);
     }

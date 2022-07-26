@@ -13,7 +13,6 @@ class FakeDomainSubscriber extends DomainSubscriber
 
     public function execute(array $body): void
     {
-        var_dump($body);
     }
 
     function origin(): string

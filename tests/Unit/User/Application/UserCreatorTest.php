@@ -35,6 +35,7 @@ final class UserCreatorTest extends TestCase
     /** @test */
     public function user_should_be_created(): void
     {
+        /** @var UserId $userId */
         $userId = UserId::random();
         $this->userCreator->__invoke($userId, new UserName("test2"), new UserPassword("test"));
 
@@ -44,7 +45,9 @@ final class UserCreatorTest extends TestCase
     /** @test */
     public function user_should_not_be_created(): void
     {
+        /** @var UserId $userId */
+        $userId = UserId::random();
         $this->expectException(UserDoesExist::class);
-        $this->userCreator->__invoke(UserId::random(), new UserName("test"), new UserPassword("test"));
+        $this->userCreator->__invoke($userId, new UserName("test"), new UserPassword("test"));
     }
 }
